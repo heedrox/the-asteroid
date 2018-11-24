@@ -1,9 +1,6 @@
 const { aCommandSyn, Commands, theEndingScene, aRoom, anItem, aLockedDestination, aCondDescUsage, aCondDesc, anExpectAnswerAction, anAnswer, anUsage, aConditionalResponse, anUnlockingAction, aPickingAction, pluginExtension, aPickingCondition } = require('scure').dsl;
 const { syns } = require('./syns-es');
-
-const useGun = () => {};
-const useMachine = () => {};
-const lookGun = () => {};
+const { crossAnomaly } = require('../plugin-extension/cross-anomaly');
 
 exports.data = {
   sentences: {
@@ -32,6 +29,9 @@ exports.data = {
     'end-timeover': 'Ya no hay tiempo, la anomalía se ha desgarrado, y nuestra existencia con ella. Lo siento. ¡Inténtalo otra vez!',
     'answer-cant': '¿Perdona? No estaba esperando una respuesta. Si me estás contestando a un código, utiliza antes el objeto en cuestión.',
     'walk-nowhere': 'Desde aquí no podemos ir a ningún sitio. ¡Busca una salida!',
+    'cross-anomaly-first-time': 'Me adentro en la anomalía, al principo con miedo, pero veo que no hay peligro. Ha sido como cruzar una cortina. Estoy en el mismo laboratorio, pero me siento como al otro lado. Creo que he cruzado a otra dimensión. Este sitio es el mismo, pero no es el mismo. Le llamaré el "Laboratorio del otro lado".',
+    'cross-anomaly-direction-to-other': 'Vuelvo a adentrarme en el laboratorio del otro lado.',
+    'cross-anomaly-direction-from-other': 'Vuelvo al laboratorio de nuestro universo.',
   },
   init: {
     totalMinutes: 10,
@@ -54,10 +54,10 @@ exports.data = {
   },
   map: {
     'entrada': ['laboratorio', 'comunicaciones'],
-    'laboratorio': ['entrada','comunicaciones'],
+    'laboratorio': ['entrada','comunicaciones', aLockedDestination('laboratorio-other', 'crossedAlready', 'Antes de ir al laboratorio directamente, quizás debería andar hacia la anomalía.')],
     'comunicaciones': ['entrada', 'laboratorio'],
     'entrada-other': ['laboratorio-other', 'comunicaciones–other'],
-    'laboratorio-other': ['entrada-other','conunicaciones-other'],
+    'laboratorio-other': ['entrada-other','conunicaciones-other', aLockedDestination('laboratorio', 'crossedAlready')],
     'comunicaciones-other': ['entrada-other', 'laboratorio-other'],
   },
   items: [
@@ -84,7 +84,7 @@ exports.data = {
           aCondDescUsage(false, 'picked:puntero-e1', 'Ya hemos abierto el cajón, y está vacío.'),
         ]),
       ], false),
-    anUsage('anomalia-l1', pluginExtension(crossAnomaly), false),
+    anUsage('anomalia-l1', [ pluginExtension(crossAnomaly) ], false),
     anUsage(['llave-e2', 'cajon-e1'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
   ],
   answers: [

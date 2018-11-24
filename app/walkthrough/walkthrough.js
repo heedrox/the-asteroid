@@ -11,8 +11,11 @@ const commands = [
   c('use', 'cajón'),
   c('walk', 'laboratorio'),
   c('look', ''),
+  c('walk', 'laboratorio del otro lado'),
   c('look', 'anomalía'),
   c('walk', 'anomalía'),
+  c('walk', 'laboratorio'),
+  c('walk', 'laboratorio'),
 
 ];
 
