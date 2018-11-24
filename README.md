@@ -17,6 +17,8 @@ Este juego utiliza el motor SCURE, un motor para la generación de aventuras con
 
 Tan fácil como hacer un JSON y desplegarla en unas cloud functions.
 
+Además, con las extensiones Plugin, es fácilmente extendible.
+
 # Contacto
 
 Contáctame y te cuento cómo hacer tu propia aventura conversacional.
