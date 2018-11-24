@@ -2,9 +2,15 @@ const { crossAnomaly } = require('../../app/plugin-extension/cross-anomaly');
 const { stateUnlock, stateIsUnlocked } = require('scure').lib;
 
 describe('Cross Anomaly', () => {
+
+  let scure;
+
+  beforeEach(() => {
+    scure = buildScure();
+  });
+
   it ('changes to the other side when using from laboratorio', () => {
     const data = { roomId: 'laboratorio' };
-    const scure = buildScure();
 
     crossAnomaly(data, scure);
 
@@ -12,7 +18,6 @@ describe('Cross Anomaly', () => {
   });
   it ('changes to the original side when using from laboratorio-other', () => {
     const data = { roomId: 'laboratorio-other' };
-    const scure = buildScure();
 
     crossAnomaly(data, scure);
 
@@ -21,7 +26,6 @@ describe('Cross Anomaly', () => {
 
   it('says first sentence when crossing for the first time', () => {
     const data = { roomId: 'laboratorio' };
-    const scure = buildScure();
 
     const response = crossAnomaly(data, scure);
 
@@ -30,7 +34,6 @@ describe('Cross Anomaly', () => {
 
   it('unlocks crossedAlready when crossing for the first time', () => {
     const data = { roomId: 'laboratorio' };
-    const scure = buildScure();
 
     const response = crossAnomaly(data, scure);
 
@@ -42,8 +45,6 @@ describe('Cross Anomaly', () => {
     const data = { roomId: 'laboratorio' };
     stateUnlock(data, 'crossedAlready');
 
-    const scure = buildScure();
-
     const response = crossAnomaly(data, scure);
 
     expect(response).to.equal(scure.sentences.get('cross-anomaly-direction-to-other'));
@@ -52,7 +53,6 @@ describe('Cross Anomaly', () => {
   it('says other sentence when crossing for the second time in other direction', () => {
     const data = { roomId: 'laboratorio-other' };
     stateUnlock(data, 'crossedAlready');
-    const scure = buildScure();
 
     const response = crossAnomaly(data, scure);
 
