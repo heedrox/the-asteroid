@@ -36,6 +36,7 @@ exports.data = {
     'cross-anomaly-direction-from-other': 'Vuelvo al laboratorio de nuestro universo.',
     'master-mind-result': 'En la pantalla se muestra una bola verde con el número {verde}, una bola naranja con el número {naranja}, y una bola roja con el número {rojo}',
     'master-mind-norepeat': 'En la pantalla se muestra el siguiente mensaje: LOS NÚMEROS NO PUEDEN REPETIRSE.',
+    'final-question': '¿Qué hacemos ahora?',
   },
   init: {
     totalMinutes: 15,
@@ -51,7 +52,7 @@ exports.data = {
     aRoom('entrada-other', 'Entrada del otro lado', syns.rooms['entrada-other'], 'Estoy en la entrada del complejo, en el otro lado. La puerta al exterior está cerrada. Tiene también una mesa con una caja encima.'),
   ],
   mapImage: {
-    url: 'https://simomega-1debd.firebaseapp.com/map/map.jpg',
+    url: 'https://the-anomaly-897ce.firebaseapp.com/the-anomaly-map.jpg',
     alt: 'Mapa con: entrada, laboratorio y comunicaciones.',
   },
   map: {
@@ -134,7 +135,7 @@ exports.data = {
       'El canal debería ser un número, y sin embargo, son 4 letras, ¿o no? O.S.E.S.',
       'Esto parece el mundo del revés. Deberían ser números y sin embargo son 4 letras. O.S.E.S.',
     ], false),
-    anUsage('ordenador-c1', [ anExpectAnswerAction('¿Qué canal quieres escuchar? Parece que son 4 cifras.', 'ordenador-canal-c1') ], false),
+    anUsage('ordenador-c1', [ anExpectAnswerAction('Parece que son 4 cifras. ¿Qué canal quieres escuchar?', 'ordenador-canal-c1') ], false),
     anUsage('grabacion-c1', [
       aConditionalResponse([
         aCondDescUsage(false,'!unlocked:lock-conversacion-c1', '¿Qué conversaciones? No oigo nada. El ordenador de comunicaciones está apagado.'),
