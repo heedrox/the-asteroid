@@ -14,7 +14,7 @@ exports.LASER_ON_AUDIO = '<speak><par>' +
   '  </par></speak>';
 
 exports.ENDING_AUDIO = '<speak><par><media repeatCount="3" soundLevel="-20dB">' +
-  '  <audio src="https://actions.google.com/sounds/v1/weapons/big_explosion_cut_off.ogg"></audio>\n' +
+  '  <audio src="https://actions.google.com/sounds/v1/weapons/big_explosion_cut_off.ogg"></audio>' +
   '  </media>' +
   '  <media begin="15s">' +
   '  <audio src="https://actions.google.com/sounds/v1/weapons/big_explosion_distant.ogg"></audio>' +
@@ -42,6 +42,7 @@ exports.CROSSING_AUDIO = '<speak>' +
 exports.HELLO = '<speak>' +
   '<audio src="https://the-anomaly-897ce.firebaseapp.com/beep.mp3"></audio>' +
   '  <break time="1s"></break>' +
-  '  ¡Hola! Soy Dron Johnson, y soy tu compañero de aventuras. Tenemos 10 minutos para salvar a la humanidad, y descubrir qué es esa anomalía. Dame instrucciones para interactuar con el entorno.' +
+  '  ¡Hola! Soy Dron Johnson, ' +
+  '   <audio src="https://developers.google.com/actions/tools/sound-library/cartoon" clipEnd="2s"></audio>, y soy tu compañero de aventuras. Tenemos 10 minutos para salvar a la humanidad, y descubrir qué es esa anomalía. Dame instrucciones para interactuar con el entorno.' +
   '  <emphasis level="strong">¡Vamos allá!</emphasis>' +
   '  </speak>';
