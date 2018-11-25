@@ -24,6 +24,7 @@ const syns = {
     'caja-e2': ['caja', 'puzle', 'puzzle', 'juego', 'mastermind', 'teclado', 'juguete', 'teclado', 'teclado de la caja'],
     'cajon-e2': ['cajón', 'cajonera', 'cajón abierto'],
     'papel-e2': ['papel', 'escrito', 'papel escrito por niña', 'hoja de papel', 'hoja'],
+    'linterna-e1': ['linterna azul', 'linterna', 'luz azul', 'azul'],
 
   },
 };

@@ -90,6 +90,10 @@ exports.data = {
       aCondDesc('!picked:llave-e2', '¿De qué llave me hablas?'),
       aCondDesc('picked:llave-e2', 'Es la llave de la mesa de la entrada. Si abre el cajón del otro lado, quizás...'),
       ], 'entrada-other', false),
+    anItem('linterna-e1', 'Linterna azul', syns.items['linterna-e1'], [
+      aCondDesc('!picked:linterna-e1', '¿De qué linterna me hablas?'),
+      aCondDesc('picked:linterna-e1', 'Es una linterna que emite un color azul muy intenso. '),
+      ], 'entrada', false),
   ],
   usages: [
     anUsage('cajon-e1', [
@@ -104,11 +108,11 @@ exports.data = {
     anUsage('papel-e2', [ 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos! ¡Recuerda que los números no pueden repetirse!.'], false),
     anUsage('cajon-e2', [ 'El cajón ya está abierto, no hace falta abrirlo más. Quizás te interese leer el papel que hay dentro.'], false),
     anUsage('caja-e2', [ anExpectAnswerAction('¿Qué código quieres introducir? Dime un número de 3 cifras y lo pongo en la caja.', 'mastermind-e2') ], false),
-    anUsage(['llave-e2', 'cajon-e1'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
+    anUsage(['llave-e2', 'cajon-e1'], [ aPickingAction('Dentro hay una linterna. Parece que emite color azul. Me la llevo.', 'linterna-e1') ], true),
 
   ],
   answers: [
-    anAnswer('mastermind-e2', 'var:mastermindNumber', aPickingAction('¡Bien! La caja se abre, mostrando una llave. Me la llevo.'), pluginExtension(masterMind)),
+    anAnswer('mastermind-e2', 'var:mastermindNumber', aPickingAction('¡Bien! La caja se abre, mostrando una llave. Me la llevo.', 'llave-e2'), pluginExtension(masterMind)),
   ],
   commandSyns: [
     aCommandSyn(Commands.WALK, 'anomalia-l1', Commands.USE),

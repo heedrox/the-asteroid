@@ -36,6 +36,12 @@ const commands = [
   c('answer', '', '674'),
   c('use', 'juego'),
   c('answer', '', '831'),
+  c('use', 'juego'),
+  c('answer', '', 'data.mastermindNumber'),
+  c('walk', 'laboratorio'),
+  c('walk', 'laboratorio'),
+  c('walk', 'entrada'),
+  c('use', ['llave', 'cajón']),
 
 ];
 
