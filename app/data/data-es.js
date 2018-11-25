@@ -1,6 +1,7 @@
-const { aCommandSyn, Commands, aRoom, anItem, aLockedDestination, aCondDescUsage, aCondDesc, anUsage, aConditionalResponse, pluginExtension } = require('scure').dsl;
+const { aPickingAction, anAnswer, aCommandSyn, Commands, aRoom, anItem, aLockedDestination, aCondDescUsage, aCondDesc, anUsage, aConditionalResponse, pluginExtension, anExpectAnswerAction } = require('scure').dsl;
 const { syns } = require('./syns-es');
 const { crossAnomaly } = require('../plugin-extension/cross-anomaly');
+const { masterMind } = require('../plugin-extension/master-mind');
 
 exports.data = {
   sentences: {
@@ -32,6 +33,7 @@ exports.data = {
     'cross-anomaly-first-time': 'Me adentro en la anomalía, al principo con miedo, pero veo que no hay peligro. Ha sido como cruzar una cortina. Estoy en el mismo laboratorio, pero me siento como al otro lado. Creo que he cruzado a otra dimensión. Este sitio es el mismo, pero no es el mismo. Le llamaré el "Laboratorio del otro lado".',
     'cross-anomaly-direction-to-other': 'Vuelvo a adentrarme en el laboratorio del otro lado.',
     'cross-anomaly-direction-from-other': 'Vuelvo al laboratorio de nuestro universo.',
+    'master-mind-result': 'En la pantalla se muestra una bola verde con el número {verde}, una bola naranja con el número {naranja}, y una bola roja con el número {rojo}',
   },
   init: {
     totalMinutes: 10,
@@ -79,12 +81,14 @@ exports.data = {
       aCondDesc('!unlocked:laser-e2', 'Es un aparato enorme. Está apagado.'),
       aCondDesc('unlocked:laser-e2', 'Es un aparato enorme. Está encendido. Un rayo de luz recorre el laboratorio y cruza la anomalía.'),
       ], 'laboratorio-other', false),
-    anItem('llave-e2', 'Llave', syns.items['llave-e2'], 'Es la llave de la mesa de la entrada.', 'entrada-other', true),
     anItem('mesa-e2', 'Mesa', syns.items['mesa-e2'], 'Es la mesa en la entrada del complejo del otro lado. Tiene una caja encima. También tiene un cajón, y éste, por suerte, está abierto.', 'entrada-other', false),
     anItem('cajon-e2', 'Cajon', syns.items['cajon-e2'], 'Tiene un papel dentro con escritura que parece de una niña pequeña.', 'entrada-other', false),
-    anItem('papel-e2', 'Papel', syns.items['papel-e2'], 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos!.', 'entrada-other', false),
+    anItem('papel-e2', 'Papel', syns.items['papel-e2'], 'En el papel está escrito lo siguiente: Papá, te he escondido algo dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos!.', 'entrada-other', false),
     anItem('caja-e2', 'Caja', syns.items['caja-e2'], 'Más que una caja de seguridad parece un juego. La caja es digital, y tiene un teclado para introducir un código de 3 dígitos. Creo que alguien ha encerrado algo que nos puede interesar dentro de esta caja. ', 'entrada-other', false),
-
+    anItem('llave-e2', 'Llave', syns.items['llave-e2'], [
+      aCondDesc('!picked:llave-e2', '¿De qué llave me hablas?'),
+      aCondDesc('picked:llave-e2', 'Es la llave de la mesa de la entrada. Si abre el cajón del otro lado, quizás...'),
+      ], 'entrada-other', false),
   ],
   usages: [
     anUsage('cajon-e1', [
@@ -95,12 +99,15 @@ exports.data = {
         ]),
       ], false),
     anUsage('anomalia-l1', [ pluginExtension(crossAnomaly) ], false),
-    anUsage(['llave-e2', 'cajon-e1'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
+    anUsage(['llave-e2', 'cajon-e2'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
     anUsage('papel-e2', [ 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos!.'], false),
     anUsage('cajon-e2', [ 'El cajón ya está abierto, no hace falta abrirlo más. Quizás te interese leer el papel que hay dentro.'], false),
-    anUsage('caja-e2', [ '' ], false),
+    anUsage('caja-e2', [ anExpectAnswerAction('¿Qué código quieres introducir? Dime un número de 3 cifras y lo pongo en la caja.', 'mastermind-e2') ], false),
+    anUsage(['llave-e2', 'cajon-e1'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
+
   ],
   answers: [
+    anAnswer('mastermind-e2', 'var:mastermindNumber', aPickingAction('¡Bien! La caja se abre, mostrando una llave. Me la llevo.'), pluginExtension(masterMind)),
   ],
   commandSyns: [
     aCommandSyn(Commands.WALK, 'anomalia-l1', Commands.USE),

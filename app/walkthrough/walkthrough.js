@@ -26,7 +26,12 @@ const commands = [
   c('use', 'cajon'),
   c('pickup', 'papel'),
   c('look', 'juego'),
+  c('pickup', 'llave'),
+  c('look', 'llave'),
   c('use', 'juego'),
+  c('answer', '', '345'),
+  c('use', 'juego'),
+  c('answer', '', '674'),
 
 ];
 
