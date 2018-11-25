@@ -13,6 +13,8 @@ exports.LASER_ON_AUDIO = '<speak><par>' +
   '  </media>' +
   '  </par></speak>';
 
+exports.OPEN_BOX_AUDIO = '<speak><audio src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg"></audio> ¡Bien! La caja se abre, mostrando una llave. Me la llevo.</speak>';
+
 exports.ENDING_AUDIO = '<speak><par><media repeatCount="3" soundLevel="-20dB">' +
   '  <audio src="https://actions.google.com/sounds/v1/weapons/big_explosion_cut_off.ogg"></audio>' +
   '  </media>' +

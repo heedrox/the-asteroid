@@ -40,7 +40,6 @@ const commands = [
   c('answer', '', 'data.mastermindNumber'),
   c('use', 'juego'),
   c('answer', '', 'data.mastermindNumber'),
-  /*
   c('walk', 'laboratorio'),
   c('walk', 'laboratorio'),
   c('walk', 'entrada'),
@@ -78,7 +77,7 @@ const commands = [
   c('answer', '', '211015'),
   c('use', ['linterna', 'laser']),
   c('walk', 'laboratorio'),
-  c('use', ['linterna', 'anomalía']),*/
+  c('use', ['linterna', 'anomalía']),
 ];
 
 try {
