@@ -4,4 +4,4 @@ const { data } = require('./app/data/data');
 
 const appData = app(data['es']);
 
-exports.fulfillment = functions.https.onRequest(appData);
+exports.dflow = functions.https.onRequest(appData);

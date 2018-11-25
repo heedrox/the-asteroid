@@ -2,7 +2,7 @@ const { theEndingScene, anUnlockingAction, aPickingAction, anAnswer, aCommandSyn
 const { syns } = require('./syns-es');
 const { crossAnomaly } = require('../plugin-extension/cross-anomaly');
 const { masterMind } = require('../plugin-extension/master-mind');
-const { LASER_ON_AUDIO, GRABACION_AUDIO, ENDING_AUDIO } = require('./audios-es');
+const { HELLO, LASER_ON_AUDIO, GRABACION_AUDIO, ENDING_AUDIO, CROSSING_AUDIO } = require('./audios-es');
 
 exports.data = {
   sentences: {
@@ -31,7 +31,7 @@ exports.data = {
     'end-timeover': 'Ya no hay tiempo, la anomalía se ha desgarrado, y nuestra existencia con ella. Lo siento. ¡Inténtalo otra vez!',
     'answer-cant': '¿Perdona? No estaba esperando una respuesta. Si me estás contestando a un código, utiliza antes el objeto en cuestión.',
     'walk-nowhere': 'Desde aquí no podemos ir a ningún sitio. ¡Busca una salida!',
-    'cross-anomaly-first-time': 'Me adentro en la anomalía, al principo con miedo, pero veo que no hay peligro. Ha sido como cruzar una cortina. Estoy en el mismo laboratorio, pero me siento como al otro lado. Creo que he cruzado a otra dimensión. Este sitio es el mismo, pero no es el mismo. Le llamaré el "Laboratorio del otro lado".',
+    'cross-anomaly-first-time': CROSSING_AUDIO,
     'cross-anomaly-direction-to-other': 'Vuelvo a adentrarme en el laboratorio del otro lado.',
     'cross-anomaly-direction-from-other': 'Vuelvo al laboratorio de nuestro universo.',
     'master-mind-result': 'En la pantalla se muestra una bola verde con el número {verde}, una bola naranja con el número {naranja}, y una bola roja con el número {rojo}',
@@ -40,9 +40,7 @@ exports.data = {
   init: {
     totalMinutes: 10,
     roomId: 'entrada',
-    welcome: [
-      '¡Hola! Soy Dron Johnson, y soy tu compañero de aventuras. Tenemos 10 minutos para salvar a la humanidad, y descubrir qué es esa anomalía. Dame instrucciones para interactuar con el entorno. ¡Vamos allá!',
-    ],
+    welcome: [ HELLO ],
   },
   rooms: [
     aRoom('entrada', 'Entrada del complejo', syns.rooms['entrada'], 'Estoy en la entrada del complejo. Lo más destacable de este lugar es una mesa con un cajón.'),
@@ -80,8 +78,8 @@ exports.data = {
     anItem('anomalia-l2', 'Anomalía del otro lado', syns.items['anomalia-l2'],
       'Es la brecha en el espacio tiempo, de tinte verdoso, que se encuentra flotando en el aire en medio del laboratorio. ', 'laboratorio-other', false),
     anItem('laser-l2', 'Láser', syns.items['laser-l2'], [
-      aCondDesc('!unlocked:laser-e2', 'Es un aparato enorme. Está apagado.'),
-      aCondDesc('unlocked:laser-e2', 'Está encendido. Un rayo de luz azul recorre el laboratorio y atraviesa la anomalía.'),
+      aCondDesc('!unlocked:laser-l2', 'Es un aparato enorme. Está apagado.'),
+      aCondDesc('unlocked:laser-l2', 'Está encendido. Un rayo de luz azul recorre el laboratorio y atraviesa la anomalía.'),
       ], 'laboratorio-other', false),
     anItem('estanteria-l2', 'estantería', syns.items['estanteria-l2'],
       'Es una estantería. Lo más destacable es un libro que pone "Diario del laboratorio".', 'laboratorio-other', false),
@@ -116,20 +114,25 @@ exports.data = {
     anUsage(['llave-e2', 'cajon-e2'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
     anUsage('papel-e2', [ 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos! ¡Recuerda que los números no pueden repetirse!.'], false),
     anUsage('cajon-e2', [ 'El cajón ya está abierto, no hace falta abrirlo más. Quizás te interese leer el papel que hay dentro.'], false),
-    anUsage('caja-e2', [ anExpectAnswerAction('¿Qué código quieres introducir? Dime un número de 3 cifras y lo pongo en la caja.', 'mastermind-e2') ], false),
+    anUsage('caja-e2', [
+      aConditionalResponse([
+        aCondDescUsage(false, '!picked:llave-e2', anExpectAnswerAction('¿Qué código quieres introducir? Dime un número de 3 cifras y lo pongo en la caja.', 'mastermind-e2')),
+        aCondDescUsage(false, 'picked:llave-e2', 'Ya he abierto el juego. No necesito más. '),
+      ])
+    ], false),
     anUsage(['llave-e2', 'cajon-e1'], [ aPickingAction('Dentro hay una linterna. Parece que emite color azul. Me la llevo.', 'linterna-e1') ], true),
     anUsage('libro-l2', [
       'Es el diario del laboratorio. En las primeras páginas dice algo así como: "Lo que hicimos está mal. No debimos intentar jugar a ser dioses. Hemos rasgado el tejido de la creación, y ahora, debemos pagar las consecuencias". Parece que hay más',
       'En las siguientes páginas dice: "Creemos que hay alguien al otro lado. Les mandaremos un mensaje a través de nuestros sistemas de comunicaciones con lo que hemos aprendido. No nos queda más tiempo, tenemos que irnos. Temo por mi hija.".',
       'Casi en las últimas páginas se lee: "Lo que hay al otro lado parece un universo similar al nuestro. Creemos que algunas dimensiones se mueven en dirección ligeramente diferente, algunas parece que casi al revés. Eso hace, por ejemplo, que los números, los lean al revés que nosotros."',
-      'En la contraportada se lee un código de 6 cifras, sin embargo los primeros 2 digitos no se ven bien. Los últimos cuatro son 1 0 1 5.',
+      'En la contraportada se lee un código de 6 cifras, sin embargo los primeros 2 dígitos no se ven bien. Los últimos cuatro son 1 0 1 5.',
     ], false),
     anUsage('ordenador-c2', [
-      'El ordenador ya está encendido y no puedo interactuar con él. Parece que está emitiendo en un canal predefinido. Pone en mayúsculas O.S.E.S.',
-      'Parece que ya está emitiendo conversaciones en un canal predefinido. El canal es: O.S.E.S.',
+      'El ordenador ya está encendido y no puedo interactuar con él. Parece que está emitiendo en un canal predefinido. Pone en mayúsculas 4 letras: O.S.E.S.',
+      'Parece que ya está emitiendo conversaciones en un canal predefinido. El canal tiene 4 letras: O.S.E.S.',
       '¿Qué puede significar el canal O.S.E.S.? En mayúsculas.',
-      'El canal debería ser un número, y sin embargo, son letras, ¿o no? O.S.E.S.',
-      'Esto parece el mundo del revés. Deberían ser números y sin embargo son letras. O.S.E.S.',
+      'El canal debería ser un número, y sin embargo, son 4 letras, ¿o no? O.S.E.S.',
+      'Esto parece el mundo del revés. Deberían ser números y sin embargo son 4 letras. O.S.E.S.',
     ], false),
     anUsage('ordenador-c1', [ anExpectAnswerAction('¿Qué canal quieres escuchar? Parece que son 4 cifras.', 'ordenador-canal-c1') ], false),
     anUsage('grabacion-c1', [
