@@ -16,6 +16,17 @@ const commands = [
   c('walk', 'anomalía'),
   c('walk', 'laboratorio'),
   c('walk', 'laboratorio'),
+  c('look', 'anomalia'),
+  c('look', 'laser'),
+  c('look', ''),
+  c('walk', 'entrada'),
+  c('look', 'mesa'),
+  c('look', 'caja'),
+  c('look', 'teclado'),
+  c('use', 'cajon'),
+  c('pickup', 'papel'),
+  c('look', 'juego'),
+  c('use', 'juego'),
 
 ];
 

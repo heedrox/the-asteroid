@@ -1,4 +1,4 @@
-const { aCommandSyn, Commands, theEndingScene, aRoom, anItem, aLockedDestination, aCondDescUsage, aCondDesc, anExpectAnswerAction, anAnswer, anUsage, aConditionalResponse, anUnlockingAction, aPickingAction, pluginExtension, aPickingCondition } = require('scure').dsl;
+const { aCommandSyn, Commands, aRoom, anItem, aLockedDestination, aCondDescUsage, aCondDesc, anUsage, aConditionalResponse, pluginExtension } = require('scure').dsl;
 const { syns } = require('./syns-es');
 const { crossAnomaly } = require('../plugin-extension/cross-anomaly');
 
@@ -6,7 +6,7 @@ exports.data = {
   sentences: {
     help: 'Me puedes dar las siguientes instrucciones: Mirar, Usar, Ir, Coger e Inventario. Quedan {time}. ',
     'help-no-screen': 'Me puedes dar las siguientes instrucciones: Mirar, Usar, Ir, Coger e Inventario. Quedan {time}. ',
-    fallback: 'No te entiendo. Mi programación actual solo me permite mirar, usar, coger objetos; e ir a lugares. Quedan {time}. ',
+    fallback: 'Perdona, no te entiendo. No soy tan avanzado, aunque voy mejorando poco a poco. Mi programación actual solo me permite mirar, usar, coger objetos; e ir a lugares. Quedan {time}. ',
     destinations: 'Desde aquí puedo ir a: {destinations}. ',
     'destination-unknown': 'No sé ir a {destination}. ',
     'remaining-time': '{minutes} minutos y {seconds} segundos',
@@ -41,12 +41,12 @@ exports.data = {
     ],
   },
   rooms: [
-    aRoom('entrada', 'Entrada del complejo', syns.rooms['entrada'], 'Es la entrada del complejo. Lo más destacable de este lugar es una mesa con un cajón.'),
-    aRoom('laboratorio', 'Laboratorio', syns.rooms['laboratorio'], 'Es el laboratorio. Una gran anomalía en el tejido del espacio tiempo se encuentra en mitad de esta habitación.'),
-    aRoom('comunicaciones', 'Centro de comunicaciones', syns.rooms['comunicaciones'], 'Es el centro de comunicaciones. Hay un gran ordenador en una de las paredes.'),
-    aRoom('laboratorio-other', 'Laboratorio del otro lado', syns.rooms['laboratorio-other'], 'Es el laboratorio al otro lado. Puedo ver en este lado una réplica del complejo. La anomalía desde este lado tiene una vibración diferente, como... inversa. Un láser apunta en dirección a ésta.'),
-    aRoom('comunicaciones-other', 'Centro de comunicaciones del otro lado', syns.rooms['comunicaciones-other'], 'En el centro de comunicaciones del otro lado. Desde el ordenador se pueden oir conversaciones, pero se oyen extrañas. ¿Como si estuvieran al revés?'),
-    aRoom('entrada-other', 'Entrada del otro lado', syns.rooms['entrada-other'], 'Es la entrada del complejo, en el otro lado. La puerta al exterior está cerrada. Tiene también una mesa con su cajón.'),
+    aRoom('entrada', 'Entrada del complejo', syns.rooms['entrada'], 'Estoy en la entrada del complejo. Lo más destacable de este lugar es una mesa con un cajón.'),
+    aRoom('laboratorio', 'Laboratorio', syns.rooms['laboratorio'], 'Estoy en el laboratorio. Una gran anomalía en el tejido del espacio tiempo se encuentra en mitad de esta habitación.'),
+    aRoom('comunicaciones', 'Centro de comunicaciones', syns.rooms['comunicaciones'], 'Estoy en el centro de comunicaciones. Hay un gran ordenador en una de las paredes.'),
+    aRoom('laboratorio-other', 'Laboratorio del otro lado', syns.rooms['laboratorio-other'], 'Estoy en el laboratorio al otro lado. Puedo ver en este lado una réplica del complejo. La anomalía desde este lado tiene una vibración diferente. Un láser apunta en dirección a ésta.'),
+    aRoom('comunicaciones-other', 'Centro de comunicaciones del otro lado', syns.rooms['comunicaciones-other'], 'Estoy en el centro de comunicaciones del otro lado. Desde el ordenador se pueden oir conversaciones, pero se oyen extrañas. ¿Como si estuvieran al revés?'),
+    aRoom('entrada-other', 'Entrada del otro lado', syns.rooms['entrada-other'], 'Estoy en la entrada del complejo, en el otro lado. La puerta al exterior está cerrada. Tiene también una mesa con una caja encima.'),
   ],
   mapImage: {
     url: 'https://simomega-1debd.firebaseapp.com/map/map.jpg',
@@ -57,7 +57,7 @@ exports.data = {
     'laboratorio': ['entrada','comunicaciones', aLockedDestination('laboratorio-other', 'crossedAlready', 'Antes de ir al laboratorio directamente, quizás debería andar hacia la anomalía.')],
     'comunicaciones': ['entrada', 'laboratorio'],
     'entrada-other': ['laboratorio-other', 'comunicaciones–other'],
-    'laboratorio-other': ['entrada-other','conunicaciones-other', aLockedDestination('laboratorio', 'crossedAlready')],
+    'laboratorio-other': ['entrada-other','comunicaciones-other', aLockedDestination('laboratorio', 'crossedAlready')],
     'comunicaciones-other': ['entrada-other', 'laboratorio-other'],
   },
   items: [
@@ -73,7 +73,17 @@ exports.data = {
     ], 'entrada', false),
     anItem('anomalia-l1', 'Anomalía', syns.items['anomalia-l1'],
       'Es la brecha en el espacio tiempo, de tinte verdoso, que se encuentra flotando en el aire en medio del laboratorio. Es lo suficientemente grande como permitirme ver que hay algo al otro lado; creo que lo puedo cruzar.', 'laboratorio', false),
+    anItem('anomalia-l2', 'Anomalía del otro lado', syns.items['anomalia-l2'],
+      'Es la brecha en el espacio tiempo, de tinte verdoso, que se encuentra flotando en el aire en medio del laboratorio. ', 'laboratorio-other', false),
+    anItem('laser-l2', 'Láser', syns.items['laser-l2'], [
+      aCondDesc('!unlocked:laser-e2', 'Es un aparato enorme. Está apagado.'),
+      aCondDesc('unlocked:laser-e2', 'Es un aparato enorme. Está encendido. Un rayo de luz recorre el laboratorio y cruza la anomalía.'),
+      ], 'laboratorio-other', false),
     anItem('llave-e2', 'Llave', syns.items['llave-e2'], 'Es la llave de la mesa de la entrada.', 'entrada-other', true),
+    anItem('mesa-e2', 'Mesa', syns.items['mesa-e2'], 'Es la mesa en la entrada del complejo del otro lado. Tiene una caja encima. También tiene un cajón, y éste, por suerte, está abierto.', 'entrada-other', false),
+    anItem('cajon-e2', 'Cajon', syns.items['cajon-e2'], 'Tiene un papel dentro con escritura que parece de una niña pequeña.', 'entrada-other', false),
+    anItem('papel-e2', 'Papel', syns.items['papel-e2'], 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos!.', 'entrada-other', false),
+    anItem('caja-e2', 'Caja', syns.items['caja-e2'], 'Más que una caja de seguridad parece un juego. La caja es digital, y tiene un teclado para introducir un código de 3 dígitos. Creo que alguien ha encerrado algo que nos puede interesar dentro de esta caja. ', 'entrada-other', false),
 
   ],
   usages: [
@@ -86,10 +96,16 @@ exports.data = {
       ], false),
     anUsage('anomalia-l1', [ pluginExtension(crossAnomaly) ], false),
     anUsage(['llave-e2', 'cajon-e1'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
+    anUsage('papel-e2', [ 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos!.'], false),
+    anUsage('cajon-e2', [ 'El cajón ya está abierto, no hace falta abrirlo más. Quizás te interese leer el papel que hay dentro.'], false),
+    anUsage('caja-e2', [ '' ], false),
   ],
   answers: [
   ],
   commandSyns: [
     aCommandSyn(Commands.WALK, 'anomalia-l1', Commands.USE),
+    aCommandSyn(Commands.PICKUP, 'anomalia-l1', Commands.USE),
+    aCommandSyn(Commands.PICKUP, 'papel-e2', Commands.USE),
+    aCommandSyn(Commands.PICKUP, 'cajon-e2', Commands.USE),
   ],
 };
