@@ -44,7 +44,7 @@ exports.CROSSING_AUDIO = '<speak>' +
 exports.HELLO = '<speak>' +
   '<audio src="https://the-anomaly-897ce.firebaseapp.com/beep.mp3"></audio>' +
   '  <break time="1s"></break>' +
-  '  ¡Hola! Soy Dron Johnson, ' +
-  '   <audio src="https://developers.google.com/actions/tools/sound-library/cartoon" clipEnd="2s"></audio>, y soy tu compañero de aventuras. Tenemos 10 minutos para salvar a la humanidad, y descubrir qué es esa anomalía. Dame instrucciones para interactuar con el entorno.' +
+  '  ¡Hola! Soy Dron Johnson ' +
+  '   <audio src="https://actions.google.com/sounds/v1/cartoon/drum_roll.ogg" soundLevel="-15dB" clipBegin="1s" clipEnd="3s"></audio>, y soy tu compañero de aventuras. Tenemos 10 minutos para salvar a la humanidad, y descubrir qué es esa anomalía. Dame instrucciones para interactuar con el entorno.' +
   '  <emphasis level="strong">¡Vamos allá!</emphasis>' +
   '  </speak>';
