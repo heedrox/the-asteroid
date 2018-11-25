@@ -116,5 +116,15 @@ describe('Master Mind', () => {
 
       expect(response).to.contains('bola roja con el número 2');
     });
+
+    it ('tells you numbers cannot repeat', () => {
+      const data = { mastermindNumber: 145 };
+      const userAnswer = '112';
+
+      const response = masterMind(data, scure, userAnswer);
+
+      expect(response).to.contains(scure.sentences.get('master-mind-norepeat'));
+    });
   });
+
 });

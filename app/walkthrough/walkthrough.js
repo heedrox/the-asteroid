@@ -32,6 +32,8 @@ const commands = [
   c('answer', '', '345'),
   c('use', 'juego'),
   c('answer', '', '674'),
+  c('use', 'juego'),
+  c('answer', '', '831'),
 
 ];
 

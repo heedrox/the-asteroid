@@ -34,6 +34,7 @@ exports.data = {
     'cross-anomaly-direction-to-other': 'Vuelvo a adentrarme en el laboratorio del otro lado.',
     'cross-anomaly-direction-from-other': 'Vuelvo al laboratorio de nuestro universo.',
     'master-mind-result': 'En la pantalla se muestra una bola verde con el número {verde}, una bola naranja con el número {naranja}, y una bola roja con el número {rojo}',
+    'master-mind-norepeat': 'En la pantalla se muestra el siguiente mensaje: LOS NÚMEROS NO PUEDEN REPETIRSE.',
   },
   init: {
     totalMinutes: 10,
@@ -83,7 +84,7 @@ exports.data = {
       ], 'laboratorio-other', false),
     anItem('mesa-e2', 'Mesa', syns.items['mesa-e2'], 'Es la mesa en la entrada del complejo del otro lado. Tiene una caja encima. También tiene un cajón, y éste, por suerte, está abierto.', 'entrada-other', false),
     anItem('cajon-e2', 'Cajon', syns.items['cajon-e2'], 'Tiene un papel dentro con escritura que parece de una niña pequeña.', 'entrada-other', false),
-    anItem('papel-e2', 'Papel', syns.items['papel-e2'], 'En el papel está escrito lo siguiente: Papá, te he escondido algo dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos!.', 'entrada-other', false),
+    anItem('papel-e2', 'Papel', syns.items['papel-e2'], 'En el papel está escrito lo siguiente: Papá, te he escondido algo dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos! ¡Recuerda que los números no pueden repetirse!.', 'entrada-other', false),
     anItem('caja-e2', 'Caja', syns.items['caja-e2'], 'Más que una caja de seguridad parece un juego. La caja es digital, y tiene un teclado para introducir un código de 3 dígitos. Creo que alguien ha encerrado algo que nos puede interesar dentro de esta caja. ', 'entrada-other', false),
     anItem('llave-e2', 'Llave', syns.items['llave-e2'], [
       aCondDesc('!picked:llave-e2', '¿De qué llave me hablas?'),
@@ -100,7 +101,7 @@ exports.data = {
       ], false),
     anUsage('anomalia-l1', [ pluginExtension(crossAnomaly) ], false),
     anUsage(['llave-e2', 'cajon-e2'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
-    anUsage('papel-e2', [ 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos!.'], false),
+    anUsage('papel-e2', [ 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos! ¡Recuerda que los números no pueden repetirse!.'], false),
     anUsage('cajon-e2', [ 'El cajón ya está abierto, no hace falta abrirlo más. Quizás te interese leer el papel que hay dentro.'], false),
     anUsage('caja-e2', [ anExpectAnswerAction('¿Qué código quieres introducir? Dime un número de 3 cifras y lo pongo en la caja.', 'mastermind-e2') ], false),
     anUsage(['llave-e2', 'cajon-e1'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
