@@ -1,14 +1,14 @@
 exports.GRABACION_AUDIO = '<speak>Sí, parece que se oye algo: ' +
   '<audio src="https://the-anomaly-897ce.firebaseapp.com/comunicacion-anomalia.mp3">' +
   'Para cerrar la brecha, debemos saturarla lumínicamente con los tres colores principales: rojo, azul y verde. Todo apuntando a la anomalía. Quizás el láser que estábamos usando en nuestro lado te puede servir, ya que emite luz azul. Aunque necesitarás algo más. Para encender el láser, utiliza el siguiente código de 6 dígitos: 2 1 1 0.' +
-  '</audio> Los dígitos que ha dicho son 2 1 1 0. Pero luego parece que la grabación se corta abruptamente.</speak>';
+  '</audio> Los dígitos que ha dicho son 2 1 1 0. Pero luego parece que la grabación se corta abruptamente. ¿Qué hacemos?</speak>';
 
 exports.LASER_ON_AUDIO = '<speak><par>' +
   '    <media end="10s">' +
   '      <audio clipBegin="1s" src="https://actions.google.com/sounds/v1/science_fiction/alien_beam.ogg">' +
   '      </audio>' +
   '      </media>' +
-  '    <media><speak>¡Bien! El láser se enciende y un potente rayo azul atraviesa la estancia e impacta en la anomalía. Así se mantiene por ahora.' +
+  '    <media><speak>¡Bien! El láser se enciende y un potente rayo azul atraviesa la estancia e impacta en la anomalía. Así se mantiene por ahora. ¿Qué hacemos?' +
   '  </speak>' +
   '  </media>' +
   '  </par></speak>';
@@ -35,7 +35,7 @@ exports.CROSSING_AUDIO = '<speak>' +
   '      </audio>' +
   '    </media>' +
   '    <media xml:id="thetext" begin="2s">' +
-  '      <speak>Me adentro en la anomalía, al principio con miedo, pero veo que no hay peligro. Ha sido como cruzar una cortina. Estoy en el mismo laboratorio, pero me siento como al otro lado. Creo que he cruzado a otra dimensión. Este sitio es el mismo, pero no es el mismo. Le llamaré el "Laboratorio del otro lado"' +
+  '      <speak>Me adentro en la anomalía, al principio con miedo, pero veo que no hay peligro. Ha sido como cruzar una cortina. Estoy en el mismo laboratorio, pero me siento como al otro lado. Creo que he cruzado a otra dimensión. Este sitio es el mismo, pero no es el mismo. Le llamaré el "Laboratorio del otro lado". ¿Qué hacemos?' +
   '      </speak>' +
   '      </media>' +
   '  </par>' +
@@ -46,5 +46,5 @@ exports.HELLO = '<speak>' +
   '  <break time="1s"></break>' +
   '  ¡Hola! Soy Dron Johnson ' +
   '   <audio src="https://actions.google.com/sounds/v1/cartoon/drum_roll.ogg" soundLevel="-15dB" clipBegin="1s" clipEnd="3s"></audio>, y soy tu compañero de aventuras. Tenemos 10 minutos para salvar a la humanidad, y descubrir qué es esa anomalía. Dame instrucciones para interactuar con el entorno.' +
-  '  <emphasis level="strong">¡Vamos allá!</emphasis>' +
+  '  <emphasis level="strong">¡Vamos allá! Dime qué hacemos.</emphasis>' +
   '  </speak>';
