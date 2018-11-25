@@ -1,7 +1,8 @@
-const { aPickingAction, anAnswer, aCommandSyn, Commands, aRoom, anItem, aLockedDestination, aCondDescUsage, aCondDesc, anUsage, aConditionalResponse, pluginExtension, anExpectAnswerAction } = require('scure').dsl;
+const { theEndingScene, anUnlockingAction, aPickingAction, anAnswer, aCommandSyn, Commands, aRoom, anItem, aLockedDestination, aCondDescUsage, aCondDesc, anUsage, aConditionalResponse, pluginExtension, anExpectAnswerAction } = require('scure').dsl;
 const { syns } = require('./syns-es');
 const { crossAnomaly } = require('../plugin-extension/cross-anomaly');
 const { masterMind } = require('../plugin-extension/master-mind');
+const { LASER_ON_AUDIO, GRABACION_AUDIO, ENDING_AUDIO } = require('./audios-es');
 
 exports.data = {
   sentences: {
@@ -47,7 +48,7 @@ exports.data = {
     aRoom('entrada', 'Entrada del complejo', syns.rooms['entrada'], 'Estoy en la entrada del complejo. Lo más destacable de este lugar es una mesa con un cajón.'),
     aRoom('laboratorio', 'Laboratorio', syns.rooms['laboratorio'], 'Estoy en el laboratorio. Una gran anomalía en el tejido del espacio tiempo se encuentra en mitad de esta habitación.'),
     aRoom('comunicaciones', 'Centro de comunicaciones', syns.rooms['comunicaciones'], 'Estoy en el centro de comunicaciones. Hay un gran ordenador en una de las paredes.'),
-    aRoom('laboratorio-other', 'Laboratorio del otro lado', syns.rooms['laboratorio-other'], 'Estoy en el laboratorio al otro lado. Puedo ver en este lado una réplica del complejo. La anomalía desde este lado tiene una vibración diferente. Un láser apunta en dirección a ésta.'),
+    aRoom('laboratorio-other', 'Laboratorio del otro lado', syns.rooms['laboratorio-other'], 'Estoy en el laboratorio al otro lado. Puedo ver en este lado una réplica del complejo. La anomalía desde este lado tiene una vibración diferente. Un láser apunta en dirección a ésta. Un libro en una estanteria me llama la atención. '),
     aRoom('comunicaciones-other', 'Centro de comunicaciones del otro lado', syns.rooms['comunicaciones-other'], 'Estoy en el centro de comunicaciones del otro lado. Desde el ordenador se pueden oir conversaciones, pero se oyen extrañas. ¿Como si estuvieran al revés?'),
     aRoom('entrada-other', 'Entrada del otro lado', syns.rooms['entrada-other'], 'Estoy en la entrada del complejo, en el otro lado. La puerta al exterior está cerrada. Tiene también una mesa con una caja encima.'),
   ],
@@ -80,8 +81,11 @@ exports.data = {
       'Es la brecha en el espacio tiempo, de tinte verdoso, que se encuentra flotando en el aire en medio del laboratorio. ', 'laboratorio-other', false),
     anItem('laser-l2', 'Láser', syns.items['laser-l2'], [
       aCondDesc('!unlocked:laser-e2', 'Es un aparato enorme. Está apagado.'),
-      aCondDesc('unlocked:laser-e2', 'Es un aparato enorme. Está encendido. Un rayo de luz recorre el laboratorio y cruza la anomalía.'),
+      aCondDesc('unlocked:laser-e2', 'Está encendido. Un rayo de luz azul recorre el laboratorio y atraviesa la anomalía.'),
       ], 'laboratorio-other', false),
+    anItem('estanteria-l2', 'estantería', syns.items['estanteria-l2'],
+      'Es una estantería. Lo más destacable es un libro que pone "Diario del laboratorio".', 'laboratorio-other', false),
+    anItem('libro-l2', 'libro', syns.items['libro-l2'], 'Es el diario del laboratorio.', 'laboratorio-other', false),
     anItem('mesa-e2', 'Mesa', syns.items['mesa-e2'], 'Es la mesa en la entrada del complejo del otro lado. Tiene una caja encima. También tiene un cajón, y éste, por suerte, está abierto.', 'entrada-other', false),
     anItem('cajon-e2', 'Cajon', syns.items['cajon-e2'], 'Tiene un papel dentro con escritura que parece de una niña pequeña.', 'entrada-other', false),
     anItem('papel-e2', 'Papel', syns.items['papel-e2'], 'En el papel está escrito lo siguiente: Papá, te he escondido algo dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos! ¡Recuerda que los números no pueden repetirse!.', 'entrada-other', false),
@@ -94,6 +98,10 @@ exports.data = {
       aCondDesc('!picked:linterna-e1', '¿De qué linterna me hablas?'),
       aCondDesc('picked:linterna-e1', 'Es una linterna que emite un color azul muy intenso. '),
       ], 'entrada', false),
+    anItem('conversaciones-c2', 'Conversaciones', syns.items['conversaciones-c2'], 'Oigo conversaciones ligeramente al revés, son indescifrables. Sin embargo en el ordenador veo algo.', 'comunicaciones-other', false),
+    anItem('ordenador-c2', 'Ordenador', syns.items['ordenador-c2'], 'En el ordenador veo, en mayúsculas, las siguientes letras: O S E S.', 'comunicaciones-other', false),
+    anItem('ordenador-c1', 'Ordenador', syns.items['ordenador-c1'], 'El ordenador está apagado. Para encenderlo hay que introducir el número de canal.', 'comunicaciones', false),
+    anItem('grabacion-c1', 'Grabación', syns.items['grabacion-c1'], 'Una grabación', false),
   ],
   usages: [
     anUsage('cajon-e1', [
@@ -104,20 +112,63 @@ exports.data = {
         ]),
       ], false),
     anUsage('anomalia-l1', [ pluginExtension(crossAnomaly) ], false),
+    anUsage('anomalia-l2', [ pluginExtension(crossAnomaly) ], false),
     anUsage(['llave-e2', 'cajon-e2'], ['El cajón ya está abierto. No hace falta usar la llave aquí. '], false),
     anUsage('papel-e2', [ 'En el papel está escrito lo siguiente: Papá, te he dejado la llave del cajón dentro del juego que me regalaste. ¡Tienes que intentar adivinar la combinación en la menor cantidad posible de intentos! ¡Recuerda que los números no pueden repetirse!.'], false),
     anUsage('cajon-e2', [ 'El cajón ya está abierto, no hace falta abrirlo más. Quizás te interese leer el papel que hay dentro.'], false),
     anUsage('caja-e2', [ anExpectAnswerAction('¿Qué código quieres introducir? Dime un número de 3 cifras y lo pongo en la caja.', 'mastermind-e2') ], false),
     anUsage(['llave-e2', 'cajon-e1'], [ aPickingAction('Dentro hay una linterna. Parece que emite color azul. Me la llevo.', 'linterna-e1') ], true),
-
+    anUsage('libro-l2', [
+      'Es el diario del laboratorio. En las primeras páginas dice algo así como: "Lo que hicimos está mal. No debimos intentar jugar a ser dioses. Hemos rasgado el tejido de la creación, y ahora, debemos pagar las consecuencias". Parece que hay más',
+      'En las siguientes páginas dice: "Creemos que hay alguien al otro lado. Les mandaremos un mensaje a través de nuestros sistemas de comunicaciones con lo que hemos aprendido. No nos queda más tiempo, tenemos que irnos. Temo por mi hija.".',
+      'Casi en las últimas páginas se lee: "Lo que hay al otro lado parece un universo similar al nuestro. Creemos que algunas dimensiones se mueven en dirección ligeramente diferente, algunas parece que casi al revés. Eso hace, por ejemplo, que los números, los lean al revés que nosotros."',
+      'En la contraportada se lee un código de 6 cifras, sin embargo los primeros 2 digitos no se ven bien. Los últimos cuatro son 1 0 1 5.',
+    ], false),
+    anUsage('ordenador-c2', [
+      'El ordenador ya está encendido y no puedo interactuar con él. Parece que está emitiendo en un canal predefinido. Pone en mayúsculas O.S.E.S.',
+      'Parece que ya está emitiendo conversaciones en un canal predefinido. El canal es: O.S.E.S.',
+      '¿Qué puede significar el canal O.S.E.S.? En mayúsculas.',
+      'El canal debería ser un número, y sin embargo, son letras, ¿o no? O.S.E.S.',
+      'Esto parece el mundo del revés. Deberían ser números y sin embargo son letras. O.S.E.S.',
+    ], false),
+    anUsage('ordenador-c1', [ anExpectAnswerAction('¿Qué canal quieres escuchar? Parece que son 4 cifras.', 'ordenador-canal-c1') ], false),
+    anUsage('grabacion-c1', [
+      aConditionalResponse([
+        aCondDescUsage(false,'!unlocked:lock-conversacion-c1', '¿Qué conversaciones? No oigo nada. El ordenador de comunicaciones está apagado.'),
+        aCondDescUsage(false,'unlocked:lock-conversacion-c1', GRABACION_AUDIO),
+      ]),
+    ], false),
+    anUsage('laser-l2', [
+      aConditionalResponse([
+        aCondDescUsage(false, '!unlocked:laser-l2', anExpectAnswerAction('Para encenderse necesita un código de 6 cifras. ¿Cuál pongo?', 'laser-codigo-l2')),
+        aCondDescUsage(false, 'unlocked:laser-l2', 'El láser ya está encendido, y emite una potente luz azul hacia la anomalía.'),
+      ])
+      ], false),
+    anUsage(['linterna-e1', 'laser-l2'], [ 'La luz azul del láser con la luz roja de la linterna, hacen una luz violeta.']),
+    anUsage(['linterna-e1', 'anomalia-l2'], [
+      aConditionalResponse([
+        aCondDescUsage(false, '!unlocked:laser-l2', 'La luz roja de la linterna con la luz verde de la anomalía hacen una luz amarilla. No es suficiente para cerrarla.'),
+        aCondDescUsage(false, 'unlocked:laser-l2', theEndingScene(ENDING_AUDIO)),
+      ])
+      ], false),
+    anUsage(['linterna-e1', 'anomalia-l1'], [
+      aConditionalResponse([
+        aCondDescUsage(false, '!unlocked:laser-l2', 'La luz roja de la linterna con la luz verde de la anomalía hacen una luz amarilla. No es suficiente para cerrarla.'),
+        aCondDescUsage(false, 'unlocked:laser-l2', theEndingScene(ENDING_AUDIO)),
+      ])
+    ], false),
   ],
   answers: [
     anAnswer('mastermind-e2', 'var:mastermindNumber', aPickingAction('¡Bien! La caja se abre, mostrando una llave. Me la llevo.', 'llave-e2'), pluginExtension(masterMind)),
+    anAnswer('ordenador-canal-c1', '5350', anUnlockingAction(GRABACION_AUDIO, 'lock-grabacion-c1'), 'Introduzco ese canal pero no se oye nada. Creo que no es el correcto.'),
+    anAnswer('laser-codigo-l2', '211015', anUnlockingAction(LASER_ON_AUDIO, 'laser-l2'), 'Introduzco ese canal pero no se oye nada. Creo que no es el correcto.'),
   ],
   commandSyns: [
     aCommandSyn(Commands.WALK, 'anomalia-l1', Commands.USE),
     aCommandSyn(Commands.PICKUP, 'anomalia-l1', Commands.USE),
     aCommandSyn(Commands.PICKUP, 'papel-e2', Commands.USE),
     aCommandSyn(Commands.PICKUP, 'cajon-e2', Commands.USE),
+    aCommandSyn(Commands.LOOK, 'libro-l2', Commands.USE),
+    aCommandSyn(Commands.LOOK, 'grabacion-c1', Commands.USE),
   ],
 };

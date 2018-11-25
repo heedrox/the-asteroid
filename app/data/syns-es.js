@@ -1,6 +1,6 @@
 const synsEntrada = ['entrada del complejo', 'entrada principal', 'la entrada', 'entrada'];
 const synsLab = ['laboratorio', 'laboratorio', 'lab', 'centro de investigación', 'lugar laboratorio', 'sitio de laboratorio', 'habitación laboratorio', 'otro laboratorio'];
-const synsCom = ['sala de comunicaciones', 'centro de comunicaciones', 'habitación de comunicaciones', 'lugar de comunicaciones'];
+const synsCom = ['sala de comunicaciones', 'centro de comunicaciones', 'habitación de comunicaciones', 'lugar de comunicaciones', 'comunicaciones'];
 const synsAnomalia = ['anomalía', 'brecha', 'grieta', 'grieta de espacio tiempo', 'grieta de espaciotiempo', 'brecha de espacio tiempo', 'anomalía de espacio tiempo', 'grieta verde'];
 
 const syns = {
@@ -25,7 +25,12 @@ const syns = {
     'cajon-e2': ['cajón', 'cajonera', 'cajón abierto'],
     'papel-e2': ['papel', 'escrito', 'papel escrito por niña', 'hoja de papel', 'hoja'],
     'linterna-e1': ['linterna azul', 'linterna', 'luz azul', 'azul'],
-
+    'estanteria-l2': ['estantería', 'librería'],
+    'libro-l2': ['libros', 'diario', 'libros', 'diarios', 'diario de laboratorio'],
+    'conversaciones-c2': ['conversaciones', 'ruidos'],
+    'ordenador-c2': ['ordenador', 'computador', 'ordenadora', 'computadora'],
+    'ordenador-c1': ['ordenador', 'computador', 'ordenadora', 'computadora'],
+    'grabacion-c1': ['grabaciones', 'grabación', 'conversaciones', 'conversacion', 'gente hablando', 'palabras'],
   },
 };
 
