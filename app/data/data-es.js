@@ -38,7 +38,7 @@ exports.data = {
     'master-mind-norepeat': 'En la pantalla se muestra el siguiente mensaje: LOS NÚMEROS NO PUEDEN REPETIRSE.',
   },
   init: {
-    totalMinutes: 10,
+    totalMinutes: 15,
     roomId: 'entrada',
     welcome: [ HELLO ],
   },
