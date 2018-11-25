@@ -1,5 +1,12 @@
-const randomNumber = (min, max) => Math.floor(Math.random() * (max - min) + min);
-const initializeNumber = (data) => data.mastermindNumber ? data.mastermindNumber : randomNumber(100, 999);
+const shuffle = array => array
+  .map((a) => ({sort: Math.random(), value: a}))
+  .sort((a, b) => a.sort - b.sort)
+  .map((a) => a.value);
+const randomNumber = () => {
+  const digits = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  return digits.pop() * 100 + digits.pop() * 10 + digits.pop();
+};
+const initializeNumber = (data) => data.mastermindNumber ? data.mastermindNumber : randomNumber();
 const toString = nr => `${nr}`;
 const countOk = (userAnswer, rightAnswer) => {
   return (userAnswer[0] === rightAnswer[0] ? 1 : 0)

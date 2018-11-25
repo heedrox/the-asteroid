@@ -51,6 +51,17 @@ describe('Master Mind', () => {
 
       expect(data.mastermindNumber).to.equal(123);
     });
+
+    it('does not initialize numbers with repeating digits', () => {
+      const data = { };
+
+      masterMind(data, scure);
+
+      const numberStr = `${data.mastermindNumber}`;
+      expect(numberStr[0]).not.to.equal(numberStr[1]);
+      expect(numberStr[0]).not.to.equal(numberStr[2]);
+      expect(numberStr[1]).not.to.equal(numberStr[2]);
+    });
   });
 
   describe('responds when user fails', () => {
