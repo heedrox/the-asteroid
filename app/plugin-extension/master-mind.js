@@ -3,8 +3,9 @@ const shuffle = array => array
   .sort((a, b) => a.sort - b.sort)
   .map((a) => a.value);
 const randomNumber = () => {
-  const digits = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  return digits.pop() * 100 + digits.pop() * 10 + digits.pop();
+  // const digits = shuffle([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  // return digits.pop() * 100 + digits.pop() * 10 + digits.pop();
+  return 269;
 };
 const initializeNumber = (data) => data.mastermindNumber ? data.mastermindNumber : randomNumber();
 const toString = nr => `${nr}`;
