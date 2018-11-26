@@ -16,17 +16,17 @@ exports.LASER_ON_AUDIO = '<speak><par>' +
 exports.OPEN_BOX_AUDIO = '<speak><audio src="https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg"></audio> ¡Bien! La caja se abre, mostrando una llave. Me la llevo.</speak>';
 
 exports.ENDING_AUDIO = '<speak><par><media repeatCount="3" soundLevel="-20dB">' +
-  '  <audio src="https://actions.google.com/sounds/v1/weapons/big_explosion_cut_off.ogg"></audio>' +
-  '  </media>' +
-  '  <media begin="15s">' +
-  '  <audio src="https://actions.google.com/sounds/v1/weapons/big_explosion_distant.ogg"></audio>' +
-  '  </media>' +
-  '  <media>' +
-  '    <speak>' +
-  '      La luz roja de la linterna, la luz verde de la anomalía y la luz azul del láser se combinan generando una luz blanca que satura a la anomalía. Se ve cómo la luz blanca se va consumiendo, a medida que la anomalía se va cerrando. Al final se cierra. ¡Bien! Has conseguido liberar a la humanidad de una destrucción sin precedentes. ¡Enhorabuena! Cuando salgas de aquí, recuerda que Dron Johnson te ayudó. ¡Hasta la próxima!' +
-  '    </speak>' +
-  '  </media>' +
-  '    </par></speak>';
+  '<audio src="https://actions.google.com/sounds/v1/weapons/big_explosion_cut_off.ogg"></audio>' +
+  '</media>' +
+  '<media begin="15s">' +
+  '<audio src="https://actions.google.com/sounds/v1/weapons/big_explosion_distant.ogg"></audio>' +
+  '</media>' +
+  '<media>' +
+  '<speak>' +
+  'La luz roja de la linterna, la luz verde de la anomalía y la luz azul del láser se combinan generando una luz blanca que satura a la anomalía. Se ve cómo la luz blanca se va consumiendo, a medida que la anomalía se va cerrando. Al final se cierra. ¡Bien! Has conseguido liberar a la humanidad de una destrucción sin precedentes. ¡Enhorabuena! Cuando salgas de aquí, recuerda que Dron Johnson te ayudó. ¡Hasta la próxima!' +
+  '</speak>' +
+  '</media>' +
+  '</par></speak>';
 
 exports.CROSSING_AUDIO = '<speak>' +
   '  <par>' +
