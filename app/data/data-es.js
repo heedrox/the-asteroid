@@ -165,7 +165,7 @@ exports.data = {
   answers: [
     anAnswer('mastermind-e2', 'var:mastermindNumber', aPickingAction(OPEN_BOX_AUDIO, 'llave-e2'), pluginExtension(masterMind)),
     anAnswer('ordenador-canal-c1', '5350', anUnlockingAction(GRABACION_AUDIO, 'lock-grabacion-c1'), 'Introduzco ese canal pero no se oye nada. Creo que no es el correcto.'),
-    anAnswer('laser-codigo-l2', '211015', anUnlockingAction(LASER_ON_AUDIO, 'laser-l2'), 'Introduzco ese canal pero no se oye nada. Creo que no es el correcto.'),
+    anAnswer('laser-codigo-l2', '211015', anUnlockingAction(LASER_ON_AUDIO, 'laser-l2'), 'No, el láser no se enciende.'),
   ],
   commandSyns: [
     aCommandSyn(Commands.WALK, 'anomalia-l1', Commands.USE),
