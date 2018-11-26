@@ -136,6 +136,15 @@ describe('Master Mind', () => {
 
       expect(response).to.contains(scure.sentences.get('master-mind-norepeat'));
     });
+
+    it ('removes and cleans numbers', () => {
+      const data = { mastermindNumber: 145 };
+      const userAnswer = '1 3 4';
+
+      const response = masterMind(data, scure, userAnswer);
+
+      expect(response).to.contains('bola naranja con el número 1');
+    });
   });
 
 });

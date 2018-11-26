@@ -1,3 +1,16 @@
+const numeralize = x =>
+  x.replace(/ /g, '')
+    .replace(/uno/g, '1')
+    .replace(/dos/g, '2')
+    .replace(/tres/g, '3')
+    .replace(/cuatro/g, '4')
+    .replace(/cinco/g, '5')
+    .replace(/seis/g, '6')
+    .replace(/siete/g, '7')
+    .replace(/ocho/g, '8')
+    .replace(/nueve/g, '9')
+    .replace(/cero/g, '0');
+
 const shuffle = array => array
   .map((a) => ({sort: Math.random(), value: a}))
   .sort((a, b) => a.sort - b.sort)
@@ -36,8 +49,9 @@ const digitsRepeat = (answer) =>
   (answer[0] === answer[1]) || (answer[0] === answer[2]) || (answer[1] === answer[2]);
 const getSentence = (data, scure, userAnswer) => {
   if (typeof userAnswer === 'undefined') return '';
-  if (digitsRepeat(userAnswer)) return scure.sentences.get('master-mind-norepeat');
-  return getSentenceWithCountNumbers(data, scure, userAnswer);
+  const cleanAnswer = numeralize(userAnswer);
+  if (digitsRepeat(cleanAnswer)) return scure.sentences.get('master-mind-norepeat');
+  return getSentenceWithCountNumbers(data, scure, cleanAnswer);
 };
 exports.masterMind = (data, scure, userAnswer) => {
   data.mastermindNumber = initializeNumber(data);
