@@ -96,7 +96,7 @@ exports.data = {
       ], 'entrada-other', false),
     anItem('linterna-e1', 'Linterna azul', syns.items['linterna-e1'], [
       aCondDesc('!picked:linterna-e1', '¿De qué linterna me hablas?'),
-      aCondDesc('picked:linterna-e1', 'Es una linterna que emite un color azul muy intenso. '),
+      aCondDesc('picked:linterna-e1', 'Es una linterna que emite un color rojo muy intenso. '),
       ], 'entrada', false),
     anItem('conversaciones-c2', 'Conversaciones', syns.items['conversaciones-c2'], 'Oigo conversaciones ligeramente al revés, son indescifrables. Sin embargo en el ordenador veo algo.', 'comunicaciones-other', false),
     anItem('ordenador-c2', 'Ordenador', syns.items['ordenador-c2'], 'En el ordenador veo, en mayúsculas, las siguientes letras: O S E S.', 'comunicaciones-other', false),
@@ -122,7 +122,7 @@ exports.data = {
         aCondDescUsage(false, 'picked:llave-e2', 'Ya he abierto el juego. No necesito más. '),
       ])
     ], false),
-    anUsage(['llave-e2', 'cajon-e1'], [ aPickingAction('Dentro hay una linterna. Parece que emite color azul. Me la llevo.', 'linterna-e1') ], true),
+    anUsage(['llave-e2', 'cajon-e1'], [ aPickingAction('Dentro hay una linterna. Parece que emite color rojo. Me la llevo.', 'linterna-e1') ], true),
     anUsage('libro-l2', [
       'Es el diario del laboratorio. En las primeras páginas dice algo así como: "Lo que hicimos está mal. No debimos intentar jugar a ser dioses. Hemos rasgado el tejido de la creación, y ahora, debemos pagar las consecuencias". Parece que hay más',
       'En las siguientes páginas dice: "Creemos que hay alguien al otro lado. Les mandaremos un mensaje a través de nuestros sistemas de comunicaciones con lo que hemos aprendido. No nos queda más tiempo, tenemos que irnos. Temo por mi hija.".',
