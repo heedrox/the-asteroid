@@ -2,6 +2,7 @@ const { theEndingScene, anUnlockingAction, aPickingAction, anAnswer, aCommandSyn
 const { syns } = require('./syns-es');
 const { crossAnomaly } = require('../plugin-extension/cross-anomaly');
 const { masterMind } = require('../plugin-extension/master-mind');
+const { intentMapper } = require('../intents/intent-mapper');
 const { OPEN_BOX_AUDIO, HELLO, LASER_ON_AUDIO, GRABACION_AUDIO, ENDING_AUDIO, CROSSING_AUDIO } = require('./audios-es');
 
 exports.data = {
@@ -175,4 +176,5 @@ exports.data = {
     aCommandSyn(Commands.LOOK, 'libro-l2', Commands.USE),
     aCommandSyn(Commands.LOOK, 'grabacion-c1', Commands.USE),
   ],
+  intentMapper,
 };

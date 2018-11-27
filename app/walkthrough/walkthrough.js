@@ -78,6 +78,7 @@ const commands = [
   c('use', ['linterna', 'laser']),
   c('walk', 'laboratorio'),
   c('use', ['linterna', 'anomalía']),
+  c('_fallback', '', 'seethefinal'),
 ];
 
 try {
