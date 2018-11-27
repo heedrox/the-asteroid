@@ -37,9 +37,7 @@ const commands = [
   c('use', 'juego'),
   c('answer', '', '831'),
   c('use', 'juego'),
-  c('answer', '', 'data.mastermindNumber'), //the number changes each game
-  c('use', 'juego'),
-  c('answer', '', 'data.mastermindNumber'),
+  c('answer', '', '269'),
   c('walk', 'laboratorio'),
   c('walk', 'laboratorio'),
   c('walk', 'entrada'),
