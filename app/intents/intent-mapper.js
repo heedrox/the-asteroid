@@ -1,18 +1,13 @@
-const { ENDING_AUDIO } = require('../data/audios-es');
-const { getIntentForCommand } = require('scure-dialogflow').lib;
-const { Commands } = require('scure').dsl;
-const THE_FINAL_INTENT = () => (conv) => conv.close(ENDING_AUDIO);
+const { keepReadingIntent } = require('./keep-reading');
+const { directFinalIntent } = require('./direct-final');
 
 
-const isText = (txt, conv) => conv.body.queryResult.queryText === txt;
-const keepReadingIntent = (args) => {
-    args['arg'] = 'libro';
-    return getIntentForCommand(Commands.USE);
-};
+const isText = (possibleTexts, conv) =>
+  possibleTexts.indexOf(conv.body.queryResult.queryText) >= 0;
 
 const intentMapper = (scure, conv, args, originalIntent) =>
-  isText('seethefinal', conv) ? THE_FINAL_INTENT
-    : isText('sigue leyendo', conv) ? keepReadingIntent(args)
+  isText([ 'seethefinal' ], conv) ? directFinalIntent
+    : isText([ 'sigue leyendo' ], conv) ? keepReadingIntent(args)
     : originalIntent;
 
 
