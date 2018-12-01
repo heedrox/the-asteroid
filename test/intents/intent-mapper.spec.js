@@ -43,7 +43,7 @@ describe('Intent Mapper', () => {
     };
     const args = {};
 
-    const intent = intentMapper(scure, conv, args, null);
+    const intent = intentMapper(scure, conv, args, () => {});
 
     expect(intent.name).to.equal('use');
     expect(args['arg']).to.equal('libro');

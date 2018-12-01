@@ -9,4 +9,7 @@ exports.data = {
     'use-cant': 'No puedo usar el objeto {item}. ',
   },
   items: [],
+  directSentences: {
+    'sigue-leyendo': ['sigue leyendo', 'lee más', 'continúa', 'continua']
+  },
 };

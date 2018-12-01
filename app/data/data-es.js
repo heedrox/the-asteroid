@@ -177,4 +177,7 @@ exports.data = {
     aCommandSyn(Commands.LOOK, 'grabacion-c1', Commands.USE),
   ],
   intentMapper,
+  directSentences: {
+    'sigue-leyendo': ['sigue leyendo', 'lee más', 'continúa', 'continua']
+  },
 };
