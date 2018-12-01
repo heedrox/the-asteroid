@@ -178,6 +178,6 @@ exports.data = {
   ],
   intentMapper,
   directSentences: {
-    'sigue-leyendo': ['sigue leyendo', 'lee más', 'continúa', 'continua']
+    'sigue-leyendo': ['sigue leyendo', 'lee más', 'continúa', 'continua', 'continúa leyendo', 'continua leyendo']
   },
 };
