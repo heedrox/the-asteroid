@@ -20,6 +20,7 @@ const commands = [
   c('look', 'laser'),
   c('look', ''),
   c('walk', 'entrada'),
+  c('look', ''),
   c('look', 'mesa'),
   c('look', 'caja'),
   c('look', 'teclado'),

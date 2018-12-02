@@ -60,7 +60,7 @@ exports.data = {
     'entrada': ['laboratorio', 'comunicaciones'],
     'laboratorio': ['entrada','comunicaciones', aLockedDestination('laboratorio-other', 'crossedAlready', 'Antes de ir al laboratorio directamente, quizás debería andar hacia la anomalía.')],
     'comunicaciones': ['entrada', 'laboratorio'],
-    'entrada-other': ['laboratorio-other', 'comunicaciones–other'],
+    'entrada-other': ['laboratorio-other', 'comunicaciones-other'],
     'laboratorio-other': ['entrada-other','comunicaciones-other', aLockedDestination('laboratorio', 'crossedAlready')],
     'comunicaciones-other': ['entrada-other', 'laboratorio-other'],
   },
