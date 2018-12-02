@@ -9,7 +9,7 @@ exports.data = {
   sentences: {
     help: 'Me puedes dar las siguientes instrucciones: Mirar, Usar, Ir, Coger e Inventario. Quedan {time}. ',
     'help-no-screen': 'Me puedes dar las siguientes instrucciones: Mirar, Usar, Ir, Coger e Inventario. Quedan {time}. ',
-    fallback: 'Perdona, no te entiendo. No soy tan avanzado, aunque voy mejorando poco a poco. Mi programación actual solo me permite mirar, usar, coger objetos; e ir a lugares. Quedan {time}. ',
+    fallback: 'Perdona, no te entiendo. Intento mejorar cada día. Quedan {time}. ',
     destinations: 'Desde aquí puedo ir a: {destinations}. ',
     'destination-unknown': 'No sé ir a {destination}. ',
     'remaining-time': '{minutes} minutos y {seconds} segundos',
