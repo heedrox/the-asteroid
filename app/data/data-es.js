@@ -5,6 +5,8 @@ const { masterMind } = require('../plugin-extension/master-mind');
 const { intentMapper } = require('../intents/intent-mapper');
 const { OPEN_BOX_AUDIO, HELLO, LASER_ON_AUDIO, GRABACION_AUDIO, ENDING_AUDIO, CROSSING_AUDIO } = require('./audios-es');
 
+const OSES_SPELL = 'O<break strength="weak"/>S<break strength="weak"/>E<break strength="weak"/>S';
+
 exports.data = {
   sentences: {
     help: 'Me puedes dar instrucciones para que vaya de un sitio a otro, para mirar objetos, usarlos y cogerlos. Quedan {time}. ',
@@ -99,7 +101,7 @@ exports.data = {
       aCondDesc('picked:linterna-e1', 'Es una linterna que emite un color rojo muy intenso. '),
       ], 'entrada', false),
     anItem('conversaciones-c2', 'Conversaciones', syns.items['conversaciones-c2'], 'Oigo conversaciones ligeramente al revés, son indescifrables. Sin embargo en el ordenador veo algo.', 'comunicaciones-other', false),
-    anItem('ordenador-c2', 'Ordenador', syns.items['ordenador-c2'], 'En el ordenador veo, en mayúsculas, las siguientes letras: O S E S.', 'comunicaciones-other', false),
+    anItem('ordenador-c2', 'Ordenador', syns.items['ordenador-c2'], '<speak>En el ordenador veo, en mayúsculas, las siguientes letras: ' + OSES_SPELL+ '</speak>', 'comunicaciones-other', false),
     anItem('ordenador-c1', 'Ordenador', syns.items['ordenador-c1'], 'El ordenador está apagado. Para encenderlo hay que introducir el número de canal.', 'comunicaciones', false),
     anItem('grabacion-c1', 'Grabación', syns.items['grabacion-c1'], 'Una grabación', false),
   ],
@@ -130,11 +132,11 @@ exports.data = {
       'En la contraportada se lee un código de 6 cifras, sin embargo los primeros 2 dígitos no se ven bien. Los últimos cuatro son 1 0 1 5.',
     ], false),
     anUsage('ordenador-c2', [
-      'El ordenador ya está encendido y no puedo interactuar con él. Parece que está emitiendo en un canal predefinido. Pone en mayúsculas 4 letras: O.S.E.S.',
-      'Parece que ya está emitiendo conversaciones en un canal predefinido. El canal tiene 4 letras: O.S.E.S.',
-      '¿Qué puede significar el canal O.S.E.S.? En mayúsculas.',
-      'El canal debería ser un número, y sin embargo, son 4 letras, ¿o no? O.S.E.S.',
-      'Esto parece el mundo del revés. Deberían ser números y sin embargo son 4 letras. O.S.E.S.',
+      '<speak>El ordenador ya está encendido y no puedo interactuar con él. Parece que está emitiendo en un canal predefinido. Pone en mayúsculas 4 letras: ' + OSES_SPELL + "</speak>",
+      '<speak>Parece que ya está emitiendo conversaciones en un canal predefinido. El canal tiene 4 letras: ' + OSES_SPELL+ '</speak>',
+      '<speak>¿Qué puede significar el canal ' + OSES_SPELL+ '? En mayúsculas.</speak>',
+      '<speak>El canal debería ser un número, y sin embargo, son 4 letras, ¿o no? ' + OSES_SPELL + '</speak>',
+      '<speak>Esto parece el mundo del revés. Deberían ser números y sin embargo son 4 letras. ' + OSES_SPELL + '</speak>'
     ], false),
     anUsage('ordenador-c1', [ anExpectAnswerAction('Parece que son 4 cifras. ¿Qué canal quieres escuchar?', 'ordenador-canal-c1') ], false),
     anUsage('grabacion-c1', [
