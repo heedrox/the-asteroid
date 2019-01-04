@@ -9,7 +9,7 @@ const OSES_SPELL = 'O<break strength="weak"/>S<break strength="weak"/>E<break st
 
 exports.data = {
   sentences: {
-    help: 'Me puedes dar instrucciones para que vaya de un sitio a otro, para mirar objetos, usarlos y cogerlos. Quedan {time}. ',
+    help: 'Tenemos que salvar el mundo. Me puedes dar instrucciones para que vaya de un sitio a otro, para mirar objetos, usarlos y cogerlos. Por ejemplo, puedes pedirme que mire alrededor para ver qué hay. Quedan {time}. ',
     'help-no-screen': 'Me puedes dar instrucciones para que vaya de un sitio a otro, para mirar objetos, usarlos y cogerlos. Quedan {time}. ',
     fallback: 'Perdona, no te entiendo. Intento mejorar cada día. Quedan {time}. ',
     destinations: 'Desde aquí puedo ir a: {destinations}. ',
