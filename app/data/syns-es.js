@@ -1,7 +1,7 @@
 const synsEntrada = ['entrada del complejo', 'entrada principal', 'la entrada', 'entrada'];
 const synsLab = ['laboratorio', 'laboratorio', 'lab', 'centro de investigación', 'lugar laboratorio', 'sitio de laboratorio', 'habitación laboratorio', 'otro laboratorio', 'otro lado'];
 const synsCom = ['sala de comunicaciones', 'centro de comunicaciones', 'habitación de comunicaciones', 'lugar de comunicaciones', 'comunicaciones'];
-const synsAnomalia = ['anomalía', 'brecha', 'grieta', 'grieta de espacio tiempo', 'grieta de espaciotiempo', 'brecha de espacio tiempo', 'anomalía de espacio tiempo', 'grieta verde', 'ana maría', 'la maría'];
+const synsAnomalia = ['anomalía', 'brecha', 'grieta', 'grieta de espacio tiempo', 'grieta de espaciotiempo', 'brecha de espacio tiempo', 'anomalía de espacio tiempo', 'grieta verde', 'ana maría', 'la maría', 'gran anomalía del espacio-tiempo'];
 
 const syns = {
   rooms: {
