@@ -28,8 +28,8 @@ const syns = {
     'estanteria-l2': ['estantería', 'librería'],
     'libro-l2': ['libros', 'diario', 'libros', 'diarios', 'diario de laboratorio'],
     'conversaciones-c2': ['conversaciones', 'ruidos', 'grabaciones', 'grabación'],
-    'ordenador-c2': ['ordenador', 'computador', 'ordenadora', 'computadora', 'letras', 'números', 'pantalla', 'número de canal', 'canal'],
-    'ordenador-c1': ['ordenador', 'computador', 'ordenadora', 'computadora', 'pantalla', 'número de canal', 'canal'],
+    'ordenador-c2': ['ordenador', 'computador', 'ordenadora', 'computadora', 'letras', 'números', 'pantalla', 'número de canal', 'canal', 'gran ordenador'],
+    'ordenador-c1': ['ordenador', 'computador', 'ordenadora', 'computadora', 'pantalla', 'número de canal', 'canal', 'gran ordenador'],
     'grabacion-c1': ['grabaciones', 'grabación', 'conversaciones', 'conversacion', 'gente hablando', 'palabras'],
   },
 };
