@@ -1,6 +1,6 @@
 {
-  "name": "the-anomaly",
-  "description": "The anomaly is a game for Google Assistant. Save humanity in 10 minutos before the space time tissue tears apart.",
+  "name": "the-asteroid",
+  "description": "The asteroid is a game for Google Assistant. Save humanity in 15 minutes before an asteroid collides on earth.",
   "scripts": {
     "lint": "eslint .",
     "serve": "firebase serve --only functions",
