@@ -4,7 +4,7 @@ El Asteroide / The Asteroid es un juego para Google Assistant. Salva a la humani
 colisione con la tierra.
 
 Un asteroide amenaza la humanidad, y colisionará en 15 minutos. Dron Johnson es enviado allí para desviarlo.
-El objetivo inicial: detonar el asteroide con una bomba. Pero nada ocurrirá como planeado.
+El objetivo inicial: detonar y desviar el asteroide con una bomba. Pero nada ocurrirá como fue planeado.
 
 ¿De dónde viene ese asteroide? ¿Es casualidad, el destino o hay algo más?
 
