@@ -1,15 +1,14 @@
-# La Anomalía / The Anomaly
+# El Asteroide / The Asteroid
 
-La anomalía / The Anomaly, es un juego para Google Assistant. Salva a la humanidad antes de que el espacio tiempo
-se rasgue.
+El Asteroide / The Asteroid es un juego para Google Assistant. Salva a la humanidad antes de que un asteroide
+colisione con la tierra.
 
-Se ha abierto una anomalía espacio temporal en un complejo de alta seguridad, y todo indica que estallará en 
-15 minutos, en una explosión nuclear sin precedentes. Debido a la alta radiación del lugar, envían a un dron 
-para investigar lo ocurrido e intentar cerrarla antes de que este incidente ocurra.
+Un asteroide amenaza la humanidad, y colisionará en 15 minutos. Dron Johnson es enviado allí para desviarlo.
+El objetivo inicial: detonar el asteroide con una bomba. Pero nada ocurrirá como planeado.
 
-¿De dónde ha salido esa anomalía? ¿Qué es?
+¿De dónde viene ese asteroide? ¿Es casualidad, el destino o hay algo más?
 
-¡Investiga lo ocurrido y salva a la humanidad antes de que el contador llegue a su fin!
+¡Investiga el asteroide y salva a la humanidad antes de que el contador llegue a su fin!
 
 # SCURE
 
